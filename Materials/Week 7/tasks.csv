@@ -1,0 +1,8 @@
+title,type,date_due,completed,interval,completed_dates,date_created
+Buy groceries,Task,03/03/2024,FALSE,,,07/03/2024
+Do laundry,Task,09/03/2024,FALSE,,,07/03/2024
+Clean room,Task,06/03/2024,FALSE,,,07/03/2024
+Do homework,Task,10/03/2024,FALSE,,,07/03/2024
+Walk dog,Task,12/03/2024,FALSE,,,07/03/2024
+Do dishes,Task,13/03/2024,FALSE,,,07/03/2024
+Go to the gym,RecurringTask,07/03/2024,FALSE,"7 days, 0:00:00","2024-02-29,2024-02-22,2024-02-14",08/02/2024
