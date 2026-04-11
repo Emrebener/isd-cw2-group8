@@ -1,0 +1,1 @@
+assert compound_interest(1000, 5, 0.03) == 1159
