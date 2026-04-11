@@ -9,9 +9,12 @@ class Car:
         self.speed += 5
 
     def brake(self):
-        self.speed -= 5
+        if self.speed >= 5:
+            self.speed -= 5
+        else:
+            self.speed = 0
 
-    def step(self)  -> None:
+    def step(self) -> None:
         self.odometer += self.speed
         self.time += 1
 
