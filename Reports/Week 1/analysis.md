@@ -1,153 +1,355 @@
-# Week 1 -- Introduction to Python Programming I
+# Week 2 -- Introduction to Python Programming II
 
-**Module:** COMP11124 Object Oriented Programming  
-**Materials:** `Week1.pdf`, `lab_week_1.py`
+**Module:** COMP11124 Object Oriented Programming
+**Materials:** `Week2.pdf`, `code.py`, `code-solutions.py`
 
----
-
-## Exercise 0: Installing Python
-
-This one's straightforward -- just downloading and installing the Python interpreter from the official site. Nothing to code here, but it's the foundation for everything else since we need the interpreter to actually run any Python scripts.
+**Topics covered:** Comparisons and Conditionals, Lists, Loops, Input
 
 ---
 
-## Exercise 1: Setting Up Visual Studio Code
+## Exercise 1.1. Comparison Operators
 
-Again, mostly setup. We install VS Code as our code editor and open the provided `lab_week_1.py` file. VS Code prompts you to install the Python extension on first launch, which you should accept -- it gives you syntax highlighting, IntelliSense, and that handy play button to run scripts.
+This exercise introduces comparisons in Python. A comparison always returns a Boolean value -- either `True` or `False`.
 
-The starter file already has some code in it:
+You can store a Boolean directly like `is_true = True` (no quotes -- it's not a string). But more usefully, you can store the result of a comparison:
 
 ```python
-print("Hello. Welcome to the OOP Module.")
-print("This program has been run successfully.")
-
-class_name = "OOP"
-number_of_students = 20
-my_string = "Welcome to the " + class_name + " module. There are " + str(number_of_students) + " students in this class."
-
-my_string = f"Welcome to the {class_name} module. There are {number_of_students} students in this class."
+is_true = 5 > 4  # True
 ```
 
-We're asked to run this and change the `name` variable to see how the output changes. The code shows two ways of building a string from variables -- concatenation with `+` (where you have to manually call `str()` on non-string types) and f-strings (where you just drop variables inside `{}` and Python handles the rest). Both produce the same output, but the f-string version is much cleaner.
+The comparison operators are:
+- `<` (less than), `>` (greater than)
+- `==` (equal), `!=` (not equal)
+- `<=` (less than or equal to), `>=` (greater than or equal to)
+
+The task is to try each of these on W3Schools and change the values to make them return `False`.
 
 ---
 
-## Exercise 2: Running a Script Using the Command Line
+## Exercise 1.2. Logical Operators
 
-This exercise shows that you don't need VS Code's play button to run Python. You can open a terminal (CMD on Windows, Terminal on Mac), navigate to where your file is saved with `cd`, and run it with:
+Sometimes a single comparison isn't enough. For example, checking if someone's age is between 20 and 30 requires two comparisons combined. That's what logical operators are for.
 
-```
-python lab_week_1.py
-```
+Python has three:
+- **`and`** -- returns `True` only if both sides are `True`
+- **`or`** -- returns `True` if at least one side is `True`
+- **`not`** -- flips `True` to `False` and vice versa
 
-The output is the same either way. The point is that there are multiple ways to execute Python code, and knowing how to use the command line is a useful skill on its own.
-
----
-
-## Exercise 1 (Section 2): Variables and Types
-
-Now we actually start coding. This exercise is about understanding Python's basic data types and how to check and convert between them.
-
-We're given four variables and asked to guess their types:
-
-| Variable | Value | Type |
-|----------|-------|------|
-| `var_1` | `True` | `bool` |
-| `var_2` | `1` | `int` |
-| `var_3` | `3.14159` | `float` |
-| `var_4` | `"Hello World"` | `str` |
-
-To verify, we use `print(type(var_1))` and so on. The `type()` function is really handy for debugging when you're not sure what kind of data you're working with.
-
-Then comes **casting** -- converting values from one type to another. Python gives us `int()`, `float()`, `str()`, and `bool()` for this. Some important things to note:
-
-- `float(5)` gives `5.0` -- no data is lost going from int to float.
-- `int(5.5)` gives `5` -- it truncates (chops off the decimal), it doesn't round.
-- `int(True)` gives `1` -- booleans map to integers where `True` is `1` and `False` is `0`.
-
-The exercise has us create variables, cast them, and observe the results. It's a good way to build intuition about how Python handles types behind the scenes.
-
----
-
-## Exercise 2 (Section 2): Arithmetic Operators
-
-This covers all seven arithmetic operators Python offers:
-
-| Operator | Symbol | Example | Result |
-|----------|--------|---------|--------|
-| Addition | `+` | `10 + 5` | `15` |
-| Subtraction | `-` | `20 - 8` | `12` |
-| Multiplication | `*` | `6 * 4` | `24` |
-| Division | `/` | `15 / 3` | `5.0` |
-| Floor Division | `//` | `17 // 4` | `4` |
-| Modulus | `%` | `17 % 4` | `1` |
-| Exponentiation | `**` | `2 ** 3` | `8` |
-
-One thing worth noting: `/` always returns a float in Python 3, even if the result is a whole number (so `15 / 3` gives `5.0`, not `5`). If you want an integer result, use `//` for floor division instead.
-
-We also see that `print()` can take multiple arguments separated by commas, like `print("Addition:", result_addition)`, which prints them with a space in between.
-
-After understanding the operators, we apply them to two practical tasks:
-
-- **Calculating an average:** Create two numbers and compute `(num1 + num2) / 2`.
-- **Area of a rectangle:** Create `length` and `width` variables and compute `length * width`.
-
-These are simple but they get you used to combining variables and operators to solve actual problems.
-
----
-
-## Exercise 3 (Section 2): Strings and f-Strings
-
-This exercise goes deeper into strings. We already saw basic string usage, but now we learn that strings in Python are objects with built-in methods we can call.
-
-**String methods we're asked to use:**
-
-- `.upper()` -- converts the entire string to uppercase
-- `.lower()` -- converts the entire string to lowercase
-- `.replace(old, new)` -- swaps out part of the string for something else
-- `len(string)` -- returns how many characters are in the string (this is a built-in function, not a method, so it's called as `len(my_string)` rather than `my_string.len()`)
-
-The exercise also emphasizes reading documentation -- we're pointed to the W3Schools Python string reference and expected to figure out how to use these methods ourselves. That's an important skill; you're never going to memorize every function in a language, so knowing how to look things up matters.
-
-Then comes the **f-strings** section. We've already seen these in the starter code, but now we get to create our own. We make variables for our name, number of classes, and campus, and combine them into a sentence like:
+Example:
 
 ```python
-my_text = f"My name is {my_name} and I am studying {number_of_classes} classes in {campus}."
+age = 25
+is_in_age_range = age > 20 and age < 30  # True
 ```
-
-Compared to concatenation, f-strings handle type conversion automatically and are way easier to read. Once you start using them, you don't really go back.
 
 ---
 
-## Exercise (Section 3): Temperature Converter
+## Exercise 1.3. `if` Conditionals
 
-This is the final exercise and it brings everything together. We write a complete program that converts a Celsius temperature to Fahrenheit and Kelvin.
+This is where we start controlling program flow based on comparisons. A basic `if` statement checks a condition and runs the indented code block only if it's `True`.
 
-**What we need to do:**
+```python
+age = 19
+age_group = "child"
 
-1. Store a Celsius value in `celsius_input`
-2. Convert to Fahrenheit using the formula: `degree_f = celsius_input * 9/5 + 32`
-3. Convert to Kelvin using the formula: `degree_k = celsius_input + 273.15`
-4. Print the results using f-strings in a specific format
+if age > 18:
+    age_group = "adult"
 
-**Expected output (for an input of 25):**
-
-```
-Welcome to the Temperature Converter!
-
-The temperature you have entered is 25 degree Celsius.
-
-Converted Temperatures:
-25 degree Celsius is equal to 77.0 Fahrenheit.
-25 degree Celsius is equal to 298.15 Kelvin.
-
-Thank you for using the Temperature Converter!
+print(f"The age group is {age_group}")
 ```
 
-This exercise uses variables (to store the input and results), arithmetic operators (for the conversion formulas), and f-strings (for the formatted output). It's a nice synthesis of everything covered in the week.
+We set a default `age_group` of `"child"`, then the `if` statement overwrites it to `"adult"` only when the condition holds. The indented block (4 spaces or 1 tab) is what belongs to the `if`. The task is to run this with different ages and see how the output changes.
 
 ---
 
-## Closing Thoughts
+## Exercise 1.4. `if-else` Conditionals
 
-Week 1 is purely procedural -- no functions, no classes, no control flow (if/else, loops). Even though the module is called "Object Oriented Programming," it makes sense to start here since all the OOP concepts in later weeks will build on these fundamentals: variables, types, operators, and basic string handling.
+A plain `if` only handles one case. `if-else` gives us two branches -- one for when the condition is `True`, one for when it's `False`. Only one of them runs.
+
+```python
+wind_speed = 30
+
+if wind_speed < 10:
+    print("It is a calm day")
+else:
+    print("It is a windy day")
+```
+
+Since `wind_speed` is 30 (not less than 10), the `else` branch executes and we get "It is a windy day".
+
+---
+
+## Exercise 1.5. `if-elif-else` Conditionals
+
+When there are more than two possible outcomes, we chain `elif` (else-if) blocks between `if` and `else`. The example is a grading system:
+
+```python
+grade = 55
+
+if grade < 50:
+    print("You failed")
+elif grade < 60:
+    print("You passed")
+elif grade < 70:
+    print("You got a good pass")
+else:
+    print("You got an excellent pass")
+```
+
+Python checks each condition top to bottom and executes the first one that's `True`. Once a match is found, the rest are skipped entirely. So with `grade = 55`, the first check (`< 50`) fails, the second (`< 60`) succeeds, and it prints "You passed" -- the remaining `elif`/`else` blocks don't even get evaluated.
+
+---
+
+## Exercise 1.6. Summary Tasks
+
+**Task -- Compare Temperatures:** Create two variables `temperature1` and `temperature2` with different values. Use an `if` statement to check if they're equal and print a message, and an `else` to print a different message if they're not.
+
+---
+
+## Exercise 2.1. Creating a List
+
+Lists are mutable collections defined with square brackets. They're indexed starting from 0 and can hold mixed data types.
+
+```python
+integer_list = [1, 2, 3, 4, 5]
+string_list = ["apple", "banana", "orange", "grape"]
+empty_list = []
+list_with_different_types = [1, "two", 3.0, True]
+```
+
+You can also build lists from existing variables:
+
+```python
+person_1_age = 20
+person_2_age = 30
+age_list = [person_1_age, person_2_age]
+```
+
+Lists can even be nested: `[["red", "green", "blue"], ["yellow", "orange", "purple"]]`.
+
+The task is to create a `city_list` containing `"Glasgow"`, `"London"`, `"Edinburgh"`.
+
+---
+
+## Exercise 2.2. Accessing a List
+
+Individual items are accessed by index: `string_list[0]` returns `"apple"`. Negative indices count from the end: `string_list[-1]` returns `"grape"`.
+
+**Slicing** lets you grab a range: `string_list[0:2]` returns `["apple", "banana"]` -- the end index is exclusive.
+
+The task is to print the third item in `city_list` and use slicing to get the last two items.
+
+---
+
+## Exercise 2.3. Modifying a List
+
+You can change items by index (`string_list[0] = "pear"`) or add to the end with `append()`:
+
+```python
+string_list.append("orange")
+```
+
+The task is to append `"Manchester"` to `city_list` and change the second item to `"Birmingham"`.
+
+---
+
+## Exercise 2.4. Summary Task -- Create, Access and Modify Lists
+
+A combined task that tests everything covered about lists:
+- Create a `colours` list with 3 colour strings
+- Print it, access the second element, modify the first element
+- Check the length with `len()`
+- Use a conditional to check if `"red"` is in the list (using `in`)
+- Use slicing to create a `selected_colours` list from the 2nd and 3rd elements
+
+---
+
+## Exercise 3.1. While Loops
+
+A `while` loop keeps running as long as its condition is `True`.
+
+```python
+i = 0
+while i < 5:
+    print(i)
+    i += 1
+```
+
+This prints 0 through 4. The `+=` operator is shorthand for `i = i + 1`. Important: if the condition never becomes `False`, you get an infinite loop -- use Ctrl+C to kill it.
+
+---
+
+## Exercise 3.2. For Loops
+
+A `for` loop iterates over a sequence (like a list):
+
+```python
+for fruit in string_list:
+    print(fruit)
+```
+
+The variable `fruit` takes the value of each item in the list, one at a time. The name is arbitrary but should be descriptive.
+
+The task is to create a `for` loop that prints each item in `city_list`.
+
+---
+
+## Exercise 3.3. Loop Keywords: `range`, `break` and `continue`
+
+**`range()`** generates a sequence of numbers. Some forms:
+- `range(5)` -> 0, 1, 2, 3, 4
+- `range(0, 5, 2)` -> 0, 2, 4 (third parameter is the step)
+- `range(5, 0, -1)` -> 5, 4, 3, 2, 1
+
+**`break`** exits the loop early:
+
+```python
+for i in range(5):
+    if i == 2:
+        break
+    print(i)
+# prints 0, 1
+```
+
+**`continue`** skips the rest of the current iteration and moves to the next one:
+
+```python
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+# prints 0, 1, 3, 4
+```
+
+---
+
+## Exercise 3.4. Summary Tasks
+
+**Task -- Even Numbers:** Create a list of integers 1 to 10, loop through it, and only print the even ones (using `% 2 == 0`).
+
+**Task -- Sum of Squares:** Initialize `sum_of_squares = 0`, loop through 1 to 5 with `range()`, add the square of each number. Result should be 55 (1 + 4 + 9 + 16 + 25).
+
+**Task -- Countdown:** Set `countdown = 10`, use a `while` loop to count down to 1, then print `"Liftoff!"`.
+
+---
+
+## Exercise 4.1. Obtaining User Input
+
+The `input()` function pauses the program and waits for the user to type something. It always returns a string, so you need to cast it if you want a number.
+
+```python
+user_input = input("Enter something: ")
+print("You entered:", user_input)
+```
+
+For numbers:
+
+```python
+age = input("How old are you? ")
+age = int(age)
+next_year_age = age + 1
+print("Next year, you'll be", next_year_age, "years old.")
+```
+
+**Task -- User Input and Conditional Statements:** Take the user's age as input. If under 18, print "You are a minor." If between 18 and 65 (inclusive), print "You are an adult." If over 65, print "You are a senior citizen."
+
+**Task -- Temperature Converter:** Modify last week's temperature converter to take user input via `input()` instead of hardcoding a value. As an extra task, let the user choose which unit (C, K, or F) they want to convert from, and use conditionals to handle each case.
+
+---
+
+## Python Files
+
+### `code.py`
+
+This is a To-Do List Manager -- an interactive program that ties together lists, loops, functions, conditionals, and user input. It uses a `while True` loop as the main program loop with a menu system:
+
+```python
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+
+def view_tasks():
+    for ix, task in enumerate(tasks):
+        print(ix, task)
+
+def remove_task(ix):
+    del tasks[ix]
+
+while True:
+    print("--------------------")
+    print("To-Do List Manager")
+    print("1. Add a task")
+    print("2. View tasks")
+    print("3. Remove a task")
+    print("4. Quit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        task = input("Enter a task: ")
+        add_task(task)
+    elif choice == "2":
+        print("--------------------")
+        print("Current tasks:")
+        view_tasks()
+    elif choice == "3":
+        view_tasks()
+        ix = int(input("Enter the index of the task to remove: "))
+        remove_task(ix)
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice. Please try again.")
+```
+
+A few things to note:
+- `enumerate(tasks)` gives both the index and the value for each item, which is used for display and removal
+- `del tasks[ix]` removes a list item by index
+- The `while True` loop runs forever until the user picks option 4, which triggers `break`
+- `input()` always returns a string, so `choice` is compared against string `"1"`, `"2"`, etc. -- and `int()` is used when we need a numeric index for removal
+
+### `code-solutions.py`
+
+This file contains solutions to three function-based exercises:
+
+**1. Greeting friends** -- iterates over a list and prints a greeting for each:
+
+```python
+friend_list = ["John", "Jane", "Jack"]
+
+def greet_friends(friends):
+    for friend in friends:
+        print(f"Hello {friend}!")
+
+greet_friends(friend_list)
+```
+
+**2. Tax calculator** -- a simple function with two parameters that returns a value:
+
+```python
+def calculate_tax(income, tax_rate):
+    return income * tax_rate
+
+print(calculate_tax(50000, 0.2))  # 10000.0
+```
+
+**3. Compound interest calculator** -- includes input validation and a loop:
+
+```python
+def compound_interest(principal, interest_rate, duration):
+    if interest_rate < 0 or interest_rate > 1:
+        print("Please enter a decimal number between 0 and 1")
+        return None
+    if duration < 0:
+        print("Please enter a positive number of years")
+        return None
+    for i in range(1, duration + 1):
+        investment_value = principal * (1 + interest_rate) ** i
+        print(f"The total amount of money earned by the investment is {int(investment_value)} £")
+    return int(investment_value)
+
+print(compound_interest(1000, 0.03, 5))
+```
+
+This one validates inputs with conditionals (returning `None` early if invalid), then uses a `for` loop with `range()` to calculate the compound interest year by year. The formula `principal * (1 + interest_rate) ** i` uses the exponentiation operator from Week 1.
