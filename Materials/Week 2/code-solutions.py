@@ -1,20 +1,3 @@
-
-friend_list = ["John", "Jane", "Jack"]
-
-# function code goes here
-def greet_friends(friends):
-    for friend in friends:
-        print(f"Hello {friend}!")
-
-greet_friends(friend_list)
-
-
-def calculate_tax(income, tax_rate):
-    return income * tax_rate
-
-print(calculate_tax(50000, 0.2))
-
-
 def compound_interest(principal, interest_rate, duration):
     if interest_rate < 0 or interest_rate > 1:
         print("Please enter a decimal number between 0 and 1")
